@@ -9,6 +9,7 @@ public class Key : MonoBehaviour
         PlayerController pController = collision.GetComponent<PlayerController>();
         if(pController != null)
         {
+            pController.key.Play();
             pController.setKey(true);
             Destroy(gameObject);
         }

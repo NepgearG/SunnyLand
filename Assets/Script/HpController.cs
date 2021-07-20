@@ -32,7 +32,6 @@ public class HpController : MonoBehaviour
             {
                 isInvincible = false;
                 animator.SetBool("IsHurt", false);
-                animator.SetBool("IsIdle", true);
                 pController.setBattle(false) ;
             }
         }
