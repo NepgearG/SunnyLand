@@ -27,10 +27,6 @@ public class OpossumController : EnemyController
         Movement();
     }
 
-    protected override void OnCollisionEnter2D(Collision2D collision)
-    {
-        base.OnCollisionEnter2D(collision);
-    }
     void Movement()
     {
         if (faceLeft)

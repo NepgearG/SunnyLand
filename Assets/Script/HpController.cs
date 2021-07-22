@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HpController : MonoBehaviour
 {
-    public int maxHealth = 2;
+    public int maxHealth = 1;
     public int getHealth { get { return currentHealth; } }
     public float timeInvincible =1.0f;
     public AudioSource hurtAudio;
@@ -13,11 +13,11 @@ public class HpController : MonoBehaviour
     int currentHealth;
     bool isInvincible;
     float InvincibleTimer;
-    PlayerController pController;
+    BattleController battleController;
     // Start is called before the first frame update
     void Start()
     {
-        pController = GetComponent<PlayerController>();
+        battleController = GetComponent<BattleController>();
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
     }
@@ -32,7 +32,7 @@ public class HpController : MonoBehaviour
             {
                 isInvincible = false;
                 animator.SetBool("IsHurt", false);
-                pController.setBattle(false) ;
+                battleController.setBattle(false) ;
             }
         }
     }

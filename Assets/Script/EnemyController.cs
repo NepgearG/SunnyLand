@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
 
     protected Animator enemyAnimator;
     protected Rigidbody2D _rigidbody2D;
+    protected CircleCollider2D _circleCollider2D;
     
     protected float shift = 2;
     protected float jumpforce = 4;
@@ -18,37 +19,18 @@ public class EnemyController : MonoBehaviour
     protected bool onGround;
     protected AudioSource audioSource;
 
-    protected virtual void OnCollisionEnter2D(Collision2D collision)
-    {
-        PlayerController pController = collision.gameObject.GetComponent<PlayerController>();
-        HpController player = collision.gameObject.GetComponent<HpController>();
-        Rigidbody2D playerRigidbody2D = collision.gameObject.GetComponent<Rigidbody2D>();
-        Animator pAnimator = collision.gameObject.GetComponent<Animator>();
-
-        if (player != null)
-        {
-            if (collision.GetContact(0).normal.y < -0.1f)
-            {
-                setDeathFlag();
-                playerRigidbody2D.velocity = new Vector2(playerRigidbody2D.velocity.x, -playerRigidbody2D.velocity.y * jump);
-                pAnimator.SetBool("IsJump", true);
-                pController.setBattle(true);
-                pController.setBattle(false);
-            }
-            else
-            {
-                playerRigidbody2D.velocity = new Vector2(-playerRigidbody2D.velocity.x * shift, playerRigidbody2D.velocity.y);
-                player.ChangeHealth(-1);
-                pController.setBattle(true);
-
-            }
-
-        }
-    }
+   
     protected virtual void Start()
     {
         enemyAnimator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        _circleCollider2D = GetComponent<CircleCollider2D>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+    }
+
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+
     }
     public void death()
     {
@@ -56,8 +38,12 @@ public class EnemyController : MonoBehaviour
     }
     public void setDeathFlag()
     {
+
+        _circleCollider2D.enabled = false;
+        _rigidbody2D.simulated = false;
         audioSource.Play();
         enemyAnimator.SetTrigger("dead");
+
     }
 
 }

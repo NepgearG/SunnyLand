@@ -7,9 +7,9 @@ public class Sign : MonoBehaviour
     public GameObject enterDialog;
      void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerController pController = collision.gameObject.GetComponent<PlayerController>();
+        MovementController player = collision.gameObject.GetComponent<MovementController>();
 
-        if (pController != null)
+        if (player != null)
         {
             enterDialog.SetActive(true);
         }

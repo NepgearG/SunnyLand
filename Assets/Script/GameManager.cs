@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     public void reStart()
     {
-            SceneManager.LoadScene("FirstScene");
+            SceneManager.LoadScene("GameOver");
     }
 
     public void Next()

@@ -13,18 +13,6 @@ public class ScoreController : MonoBehaviour
     int point = 0;
     int cherrys = 0;
     int diamonds = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void AddPoint(string pointType)
     {
         if (pointType == "Cherry")

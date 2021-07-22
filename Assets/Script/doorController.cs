@@ -9,9 +9,9 @@ public class doorController : GameManager
     public GameObject next;
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerController pController = collision.gameObject.GetComponent<PlayerController>();
+        MovementController player = collision.gameObject.GetComponent<MovementController>();
 
-        if(pController!=null && pController.getKeyStatus())
+        if (player != null && player.getKeyStatus())
         {
             next.SetActive(true);
         }
