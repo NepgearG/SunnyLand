@@ -9,7 +9,7 @@ public class FrogController : EnemyController
     protected override void Start()
     {
         base.Start();
-        speed = 4;
+        speed = 2;
         _rigidbody2D = GetComponent<Rigidbody2D>();
         leftx = leftpoint.position.x;
         rightx = rightpoint.position.x; 

@@ -13,7 +13,6 @@ public class EnemyController : MonoBehaviour
     
     protected float shift = 2;
     protected float jumpforce = 4;
-    protected float jump = 2;
     protected bool faceLeft = true;
     protected bool up = true;
     protected bool onGround;

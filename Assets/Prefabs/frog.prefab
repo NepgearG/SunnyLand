@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 7652671733254461388}
   m_Layer: 0
   m_Name: frog
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -137,7 +137,7 @@ Rigidbody2D:
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 0
+  m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!95 &5667206488337100875
@@ -186,9 +186,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.14614987}
+  m_Offset: {x: 0, y: -0.041087627}
   serializedVersion: 2
-  m_Radius: 0.57986856
+  m_Radius: 0.6849308
 --- !u!82 &7652671733254461388
 AudioSource:
   m_ObjectHideFlags: 0

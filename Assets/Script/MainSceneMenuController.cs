@@ -26,6 +26,12 @@ public class MainSceneMenuController : MonoBehaviour
         ResumeGame();
     }
 
+    public void Retry()
+    {
+        SceneManager.LoadScene("FirstScene");
+        ResumeGame();
+    }
+
     public void SetVolume(float value)
     {
         audioMixer.SetFloat("MainVolume",  value);

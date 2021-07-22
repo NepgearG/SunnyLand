@@ -19,12 +19,12 @@ public class MovementController : MonoBehaviour
     float xVelocity, vertical;
 
     [Header("status")]
-    public bool isCrouch, isOnGround, isJump, isBattle, isClimb, hasKey, isHeadBlock;
+    bool isCrouch, isOnGround, isJump, isBattle, isClimb, hasKey, isHeadBlock;
     bool jumpPressed, crouchHeld;
 
     [Header("Environment Check")]
     public LayerMask ground, ladder;
-    float footOffset = 0.45f;
+    float footOffset = 0.40f;
     float head = 0.5f;
     float groundCheck = 0.3f;
     float horizontal;
@@ -56,7 +56,6 @@ public class MovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(rb.velocity.y);
         xVelocity = Input.GetAxis("Horizontal");
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
@@ -66,7 +65,7 @@ public class MovementController : MonoBehaviour
             jumpPressed = true;
         }
         Jump();
-        
+        climb();
     }
 
     void FixedUpdate()
@@ -76,7 +75,7 @@ public class MovementController : MonoBehaviour
         {
             newMovement();
         }
-        climb();
+        
         switchAnimation();
     }
 
@@ -93,7 +92,7 @@ public class MovementController : MonoBehaviour
            
 
         if (isCrouch)
-            xVelocity /= crouchSpeed; 
+            horizontal /= crouchSpeed; 
 
         rb.velocity = new Vector2(horizontal * speedRate, rb.velocity.y);
 
@@ -242,6 +241,12 @@ public class MovementController : MonoBehaviour
     public bool getKeyStatus()
     {
         return hasKey;
+    }
+
+    //set battle status
+    public void setBattle(bool status)
+    {
+        isBattle = status;
     }
 
     //Raycast override

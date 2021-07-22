@@ -13,11 +13,11 @@ public class HpController : MonoBehaviour
     int currentHealth;
     bool isInvincible;
     float InvincibleTimer;
-    BattleController battleController;
+    MovementController movement;
     // Start is called before the first frame update
     void Start()
     {
-        battleController = GetComponent<BattleController>();
+        movement = GetComponent<MovementController>();
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
     }
@@ -32,7 +32,7 @@ public class HpController : MonoBehaviour
             {
                 isInvincible = false;
                 animator.SetBool("IsHurt", false);
-                battleController.setBattle(false) ;
+                movement.setBattle(false) ;
             }
         }
     }
