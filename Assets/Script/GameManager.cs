@@ -5,7 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     protected AudioSource dead;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -23,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     public void reStart()
     {
-            SceneManager.LoadScene("GameOver");
+        SceneManager.LoadScene("GameOver");
     }
 
     public void Next()

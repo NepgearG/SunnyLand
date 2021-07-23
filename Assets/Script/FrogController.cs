@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class FrogController : EnemyController
 {
@@ -9,12 +10,19 @@ public class FrogController : EnemyController
     protected override void Start()
     {
         base.Start();
-        speed = 2;
+        speed = 10;
         _rigidbody2D = GetComponent<Rigidbody2D>();
         leftx = leftpoint.position.x;
-        rightx = rightpoint.position.x; 
+        rightx = rightpoint.position.x;
         Destroy(leftpoint.gameObject);
         Destroy(rightpoint.gameObject);
+    }
+    
+    
+   
+    private void Update()
+    {
+        
     }
 
     private void FixedUpdate()
@@ -36,7 +44,7 @@ public class FrogController : EnemyController
     }
 
     //×Ô¶¯ÒÆ¶¯
-    void Movement()
+void Movement()
     {
         if (faceLeft && onGround)
         {

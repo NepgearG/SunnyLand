@@ -22,13 +22,15 @@ public class MainSceneMenuController : MonoBehaviour
 
     public void MainMenu()
     {
+        SaveManagement.instance.DeleteSaveData();
         SceneManager.LoadScene("Menu");
         ResumeGame();
     }
 
     public void Retry()
     {
-        SceneManager.LoadScene("FirstScene");
+        SaveManagement.instance.DeleteSaveData();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         ResumeGame();
     }
 

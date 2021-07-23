@@ -20,7 +20,7 @@ public class MovementController : MonoBehaviour
 
     [Header("status")]
     bool isCrouch, isOnGround, isJump, isBattle, isClimb, hasKey, isHeadBlock;
-    bool jumpPressed, crouchHeld;
+    bool jumpPressed, crouchHeld, faceLeft;
 
     [Header("Environment Check")]
     public LayerMask ground, ladder;
@@ -29,8 +29,6 @@ public class MovementController : MonoBehaviour
     float groundCheck = 0.3f;
     float horizontal;
 
-    [Header("AudioSource")]
-    public AudioSource key, jumpAudio;
 
     //Åö×²Ìå³ß´ç´æ·Å
     Vector2 colliderStandSize;
@@ -41,6 +39,7 @@ public class MovementController : MonoBehaviour
     Animator playerAnimator;
     Rigidbody2D rb;
     CapsuleCollider2D capsuleCollider;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -102,10 +101,20 @@ public class MovementController : MonoBehaviour
     //facedirection change
     void Direction()
     {
-        if (xVelocity < 0)
-            transform.localScale = new Vector2(-1, 1);
-        if (xVelocity > 0)
-            transform.localScale = new Vector2(1, 1);
+        if (xVelocity < 0 && !faceLeft)
+        {
+            faceLeft = !faceLeft;
+            transform.Rotate(0f, 180f, 0f);
+        }
+        else if((xVelocity > 0 && faceLeft))
+        {
+            faceLeft = !faceLeft;
+            transform.Rotate(0f, 180f, 0f);
+        }
+            
+        // transform.localScale = new Vector2(-1, 1);
+        //transform.localScale = new Vector2(1, 1);
+
     }
    
     //Physics Check
@@ -135,7 +144,8 @@ public class MovementController : MonoBehaviour
         }
         if (jumpPressed && isOnGround && !isJump)
         {
-            if(isCrouch)
+            SoundController.instance.SetAudioSource("jump");
+            if (isCrouch)
             {
                 StandUp();
                 isJump = true;
@@ -153,6 +163,7 @@ public class MovementController : MonoBehaviour
         }
         else if (jumpPressed && secondJump > 0 && !isOnGround)
         {
+            SoundController.instance.SetAudioSource("jump");
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             secondJump--;
             jumpPressed = false;

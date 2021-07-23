@@ -1,88 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 
 public class EagleController : EnemyController
 {
-    public Transform leftpoint, rightpoint, uppoint, downpoint;
-    
+    public AIPath aiPath;
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
-        speed = 2;
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-        leftx = leftpoint.position.x;
-        rightx = rightpoint.position.x;
-        upy = uppoint.position.y;
-        downy = downpoint.position.y;
-        Destroy(leftpoint.gameObject);
-        Destroy(rightpoint.gameObject);
-        Destroy(uppoint.gameObject);
-        Destroy(downpoint.gameObject);
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        if (aiPath.desiredVelocity.x >= 0.01f)
+        {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+        }
+        else if (aiPath.desiredVelocity.x <= -0.01f)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
     }
-
-    void Movement()
+    protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        if (faceLeft && up)
-        {
-            _rigidbody2D.velocity = new Vector2(-speed, jumpforce);
-            if (transform.position.x < leftx)
-            {
-                transform.localScale = new Vector3(-1, 1, 1);
-                faceLeft = false;
-            }
-            else if (transform.position.y > upy)
-            {
-                up = false;
-            }
-        }
-        else if (!faceLeft && up)
-        {
-            _rigidbody2D.velocity = new Vector2(speed, jumpforce);
-            if (transform.position.x > rightx)
-            {
-                transform.localScale = new Vector3(1, 1, 1);
-                faceLeft = true;
-            }
-            else if (transform.position.y > upy)
-            {
-                up = false;
-            }
-        }
-        else if (faceLeft && !up)
-        {
-            _rigidbody2D.velocity = new Vector2(-speed, -jumpforce);
-            if (transform.position.x < leftx)
-            {
-                transform.localScale = new Vector3(-1, 1, 1);
-                faceLeft = false;
-            }
-            else if (transform.position.y < downy)
-            {
-                up = true;
-            }
-        }
-        else if (!faceLeft && !up)
-        {
-            _rigidbody2D.velocity = new Vector2(speed, -jumpforce);
-            if (transform.position.x > rightx)
-            {
-                transform.localScale = new Vector3(1, 1, 1);
-                faceLeft = true;
-            }
-            else if (transform.position.y < downy)
-            {
-                up = true;
-            }
-        }
-    }
 
+        base.OnCollisionEnter2D(collision);
+    }
 }

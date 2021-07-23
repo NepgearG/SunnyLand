@@ -9,11 +9,9 @@ public class Cherry : MonoBehaviour
         ScoreController controller = collision.GetComponent<ScoreController>();
         if (controller != null)
         {
-            controller.cherryAudio.Play();
-            controller.AddPoint("Cherry");
+            SoundController.instance.SetAudioSource("cherry");
             controller.AddItemNum("Cherry");
-            controller.score.text = controller.getPoint().ToString();
-            controller.cherryNumber.text = controller.getCherryNum().ToString();
+            controller.AddPoint("Cherry");
             Destroy(gameObject);
         }
     }

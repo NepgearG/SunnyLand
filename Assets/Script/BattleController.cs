@@ -7,6 +7,7 @@ public class BattleController : MonoBehaviour
     [Header("vars")]
     public float shift = 2;
     public float jumpForce = 0.8f;
+    public float offset = 5f;
 
 
     Rigidbody2D rb;
@@ -23,35 +24,30 @@ public class BattleController : MonoBehaviour
         movement = GetComponent<MovementController>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Enemy")
         {
-            movement.setBattle(true);
+            
             EnemyController enemyController = collision.gameObject.GetComponent<EnemyController>();
-            if (collision.contacts[0].normal.y >0.1f)
+            if (collision.contacts[0].normal.y >0.5f)
             {
-                enemyController.setDeathFlag();
                 playerAnimator.SetBool("IsJump", true);
-                rb.velocity = new Vector2(rb.velocity.x, 10); 
+                rb.velocity = new Vector2(rb.velocity.x, 10);
+                enemyController.setDeathFlag();
             }
             else if (transform.position.x < collision.gameObject.transform.position.x)
             {
+                movement.setBattle(true);
                 hpController.ChangeHealth(-1);
-                rb.velocity = new Vector2(10, rb.velocity.y);
+                rb.velocity = new Vector2(-5, rb.velocity.y + offset);
             }
             else if (transform.position.x > collision.gameObject.transform.position.x)
             {
+                movement.setBattle(true);
                 hpController.ChangeHealth(-1);
-                rb.velocity = new Vector2(-10, rb.velocity.y);
+                rb.velocity = new Vector2(5, rb.velocity.y+offset);
             }
-            movement.setBattle(false);
         }
     }
 

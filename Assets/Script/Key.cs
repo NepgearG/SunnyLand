@@ -9,7 +9,7 @@ public class Key : MonoBehaviour
         MovementController player = collision.GetComponent<MovementController>();
         if(player != null)
         {
-            player.key.Play();
+            SoundController.instance.SetAudioSource("key");
             player.setKey(true);
             Destroy(gameObject);
         }

@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\Cherry.cs" />
+    <Compile Include="Assets\Script\BattleController.cs" />
     <Compile Include="Assets\Script\CameraController.cs" />
     <Compile Include="Assets\Script\Parallax.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
@@ -65,18 +66,25 @@
     <Compile Include="Assets\Script\EagleController.cs" />
     <Compile Include="Assets\Script\OpossumController.cs" />
     <Compile Include="Assets\Script\Diamond.cs" />
+    <Compile Include="Assets\Script\Menu.cs" />
+    <Compile Include="Assets\Script\MainSceneMenuController.cs" />
     <Compile Include="Assets\Script\Enter.cs" />
+    <Compile Include="Assets\Script\SaveManagement.cs" />
+    <Compile Include="Assets\Script\SoundController.cs" />
     <Compile Include="Assets\Script\Key.cs" />
     <Compile Include="Assets\Script\Sign.cs" />
     <Compile Include="Assets\Script\LightFlowwer.cs" />
     <Compile Include="Assets\Script\doorController.cs" />
     <Compile Include="Assets\Script\FrogController.cs" />
     <Compile Include="Assets\Script\HpController.cs" />
-    <Compile Include="Assets\Script\UIHealth.cs" />
+    <Compile Include="Assets\Script\Weapon.cs" />
+    <Compile Include="Assets\Script\CoinCollect.cs" />
     <Compile Include="Assets\Script\MovementController.cs" />
-    <Compile Include="Assets\Script\BattleController.cs" />
-    <Compile Include="Assets\Script\Menu.cs" />
-    <Compile Include="Assets\Script\MainSceneMenuController.cs" />
+    <Compile Include="Assets\Script\Bullet.cs" />
+    <Compile Include="Assets\Script\tips.cs" />
+    <Compile Include="Assets\Script\Clear.cs" />
+    <Compile Include="Assets\Script\Castle.cs" />
+    <Compile Include="Assets\Script\MainMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -324,6 +332,9 @@
     </Reference>
     <Reference Include="UnityEditor.UnityConnectModule">
       <HintPath>E:\Unity\2020.3.11f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+      <HintPath>Assets\AstarPathfindingProject\Plugins\DotNetZip\Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>Library\PackageCache\com.unity.nuget.newtonsoft-json@2.0.0\Runtime\Newtonsoft.Json.dll</HintPath>
@@ -801,6 +812,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="PackageToolsEditor.csproj">
+      <Project>{4D498210-812B-FB40-1597-E05CDC84833F}</Project>
+      <Name>PackageToolsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProject.csproj">
+      <Project>{4B828391-9D62-6213-7B21-5807BEEAA6DC}</Project>
+      <Name>AstarPathfindingProject</Name>
+    </ProjectReference>
+    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
+      <Project>{392DA7F2-BCD8-1F5A-5034-51F24DE6F4CA}</Project>
+      <Name>AstarPathfindingProjectEditor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

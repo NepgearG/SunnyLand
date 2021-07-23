@@ -6,14 +6,13 @@ public class Diamond : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        ScoreController controller = collision.GetComponent<ScoreController>();
-        if (controller != null)
+        
+        if (collision.gameObject.tag == "Player")
         {
-            controller.diamondAudio.Play();
-            controller.AddPoint("Diamond");
+            ScoreController controller = collision.GetComponent<ScoreController>();
+            SoundController.instance.SetAudioSource("diamond");
             controller.AddItemNum("Diamond");
-            controller.score.text = controller.getPoint().ToString();
-            controller.diamondNumber.text = controller.getDiamondNum().ToString();
+            controller.AddPoint("Diamond");
             Destroy(gameObject);
         }
     }

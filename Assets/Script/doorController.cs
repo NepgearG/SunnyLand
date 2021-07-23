@@ -15,6 +15,7 @@ public class doorController : GameManager
         {
             next.SetActive(true);
         }
+        SaveManagement.instance.Save();
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
