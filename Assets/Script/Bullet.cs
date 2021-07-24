@@ -27,6 +27,10 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             enemyController.setDeathFlag();
         }
+        else if (collision.gameObject.tag == "Ground")
+        {
+            Destroy(gameObject);
+        }
         
     }
 }

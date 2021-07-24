@@ -24,7 +24,7 @@ public class MovementController : MonoBehaviour
 
     [Header("Environment Check")]
     public LayerMask ground, ladder;
-    float footOffset = 0.40f;
+    float footOffset = 0.4f;
     float head = 0.5f;
     float groundCheck = 0.3f;
     float horizontal;
@@ -121,7 +121,7 @@ public class MovementController : MonoBehaviour
     void PhysicsCheck()
     {
         RaycastHit2D leftCheck = Raycast(new Vector2(-footOffset, 0f), Vector2.down, groundCheck, ground);
-        RaycastHit2D rightCheck = Raycast(new Vector2(footOffset, 0f), Vector2.down, groundCheck, ground);
+        RaycastHit2D rightCheck = Raycast(new Vector2(footOffset-0.1f, 0f), Vector2.down, groundCheck, ground);
         
         if (leftCheck || rightCheck)
             isOnGround = true;
